@@ -6,15 +6,15 @@ OBJ_NAME = build/game
 SRCDIR = src
 BUILDDIR = build
 
-SOURCES = $(wildcard $(SRCDIR)/*.cpp)
-OBJECTS = $(patsubst $(SRCDIR)/%.cpp,$(BUILDDIR)/%.o,$(SOURCES))
+SOURCES = $(wildcard $(SRCDIR)/*.c)
+OBJECTS = $(patsubst $(SRCDIR)/%.c,$(BUILDDIR)/%.o,$(SOURCES))
 
 all: $(OBJ_NAME)
 
 $(OBJ_NAME): $(OBJECTS) | $(BUILDDIR)
 	$(CC) $(OBJECTS) $(LINKER_FLAGS) -o $(OBJ_NAME)
 
-$(BUILDDIR)/%.o: $(SRCDIR)/%.cpp | $(BUILDDIR)
+$(BUILDDIR)/%.o: $(SRCDIR)/%.c | $(BUILDDIR)
 	$(CC) $(COMPILER_FLAGS) -c $< -o $@
 
 $(BUILDDIR):

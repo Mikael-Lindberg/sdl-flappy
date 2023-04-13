@@ -1,8 +1,5 @@
 #include <SDL2/SDL.h>
-#include <string>
-#include <iostream>
-
-using namespace std;
+#include <stdio.h>
 
 struct Box {
     float x;
@@ -18,7 +15,7 @@ int main(int argc, char* argv[]) {
 
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
-    bool quit = false;
+    int quit = 0;
     SDL_Event event;
 
     Box box = { 100.0f, 100.0f, 50.0f, 50.0f };
@@ -30,7 +27,7 @@ int main(int argc, char* argv[]) {
             if (event.type == SDL_KEYDOWN) {
                 switch (event.key.keysym.sym) {
                     case SDLK_ESCAPE:
-                        quit = true;
+                        quit = 1;
                         break;
                     case SDLK_SPACE:
                         // TODO: force upwards after gravity
@@ -51,6 +48,7 @@ int main(int argc, char* argv[]) {
         //SDL_Delay(10);
     }
 
+    SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
 
