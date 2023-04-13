@@ -32,17 +32,8 @@ int main(int argc, char* argv[]) {
                     case SDLK_ESCAPE:
                         quit = true;
                         break;
-                    case SDLK_a:
-                        box.x -= speed;
-                        break;
-                    case SDLK_d:
-                        box.x += speed;
-                        break;
-                    case SDLK_w:
-                        box.y -= speed;
-                        break;
-                    case SDLK_s:
-                        box.y += speed;
+                    case SDLK_SPACE:
+                        // TODO: force upwards after gravity
                         break;
                 }
             }
@@ -51,7 +42,6 @@ int main(int argc, char* argv[]) {
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderClear(renderer);
 
-        // Draw a red box
         SDL_Rect rect = { box.x, box.y, box.width, box.height };
         SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
         SDL_RenderFillRect(renderer, &rect);
